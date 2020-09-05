@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": ">=7.2.5",
-        "eliberty/symfony-messenger": "dev-3.4"
+        "eliberty/symfony-messenger": "3.4.x-dev"
     },
     "require-dev": {
         "symfony/event-dispatcher": "~3.4|^4.4|^5.0",
