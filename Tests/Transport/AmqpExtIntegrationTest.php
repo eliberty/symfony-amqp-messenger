@@ -76,6 +76,10 @@ class AmqpExtIntegrationTest extends TestCase
         $this->assertEmpty(iterator_to_array($receiver->get()));
     }
 
+    /**
+     * @group legacy
+     * ^ for now, deprecation errors are thrown during serialization.
+     */
     public function testRetryAndDelay()
     {
         $serializer = $this->createSerializer();
@@ -160,6 +164,9 @@ class AmqpExtIntegrationTest extends TestCase
 
         $signalTime = microtime(true);
         $timedOutTime = time() + 10;
+
+        // wait for worker started and registered the signal handler
+        usleep(100 * 1000); // 100ms
 
         // immediately after the process has started "booted", kill it
         $process->signal(15);
